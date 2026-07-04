@@ -1,0 +1,466 @@
+/* ============ Tokens ============ */
+:root {
+  --bg: #fafaf9;
+  --white: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #0f766e;
+  --accent-dark: #115e59;
+  --pill-bg: #f1f5f9;
+  --max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============ Header ============ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 250, 249, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  overflow-x: auto;
+}
+
+.nav a {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.nav a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.btn-resume {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-resume:hover {
+  background: var(--accent-dark);
+}
+
+/* ============ Hero ============ */
+.hero {
+  padding: 56px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.hero-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.hero-image img,
+.hero-image svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-kicker {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-weight: 700;
+  font-size: clamp(26px, 4.2vw, 36px);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.hero-lede {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 17px;
+  max-width: 520px;
+}
+
+.hero-meta {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============ Section shell ============ */
+.section {
+  padding: 44px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+
+/* ============ Strengths ============ */
+.strengths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.strength-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.strength-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.strength-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ============ Experience / timeline ============ */
+.timeline {
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.job {
+  position: relative;
+  padding-left: 30px;
+}
+
+.job-dot {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--accent);
+}
+
+.job-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 20px;
+}
+
+.job-role {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.job-org {
+  color: var(--accent);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.job-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--pill-bg);
+  padding: 2px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.job-points {
+  margin-top: 12px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.job-points li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--text-muted);
+  font-size: 14.5px;
+}
+
+.job-points li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ============ Skills ============ */
+.skills-layout {
+  display: flex;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.skills-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 24px;
+}
+
+.skill-cat-label {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 13px;
+  color: var(--text);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.skills-image {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.skills-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============ Projects ============ */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+}
+
+.project-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.project-desc {
+  color: var(--text-muted);
+  font-size: 14.5px;
+}
+
+.project-stack {
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: 12.5px;
+}
+
+/* ============ Education ============ */
+.edu-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 20px;
+}
+
+.edu-school {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.edu-degree {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  margin-top: 4px;
+}
+
+.edu-date {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* ============ Footer ============ */
+.footer {
+  padding: 52px 0 68px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-cta {
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.contact-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.contact-row a {
+  color: var(--text-muted);
+}
+.contact-row a:hover {
+  color: var(--accent);
+}
+
+.footer-note {
+  margin-top: 32px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 640px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-image {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+  .strengths-grid,
+  .skills-categories {
+    grid-template-columns: 1fr;
+  }
+  .skills-layout {
+    grid-template-columns: 1fr;
+  }
+  .nav {
+    gap: 12px;
+    font-size: 12.5px;
+  }
+}
