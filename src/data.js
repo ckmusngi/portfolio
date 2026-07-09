@@ -83,21 +83,25 @@ export const projects = [
     title: "Track Flow - In Progress",
     desc: "A one-stop job tracking application that aggregates job listings from multiple job platforms into a single dashboard, allowing users to browse opportunities and manually track their job application progress.",
     stack: "Python (Django) . JavaScript (ES6+) · HTML . CSS . PostgreSQL · AWS",
+    link: "https://www.track-flow.cyrillkm.online",
   },
   {
     title: "Automated Distance-Based Pricing System for Patient Transport",
     desc: "A pricing engine that quotes patient-transport fares in real time using the Google Maps API for distance and routing, replacing manual fare computation. Deployed on GCP for production use.",
     stack: "Laravel · React.js · Google Maps API · GCP",
+    link: "",
   },
   {
     title: "Client Portal — Custom Quoter System",
     desc: "A secure client portal for custom quoting and business management, with real-time chat over Laravel Broadcasting, document access, and job tracking.",
     stack: "Laravel · AJAX · jQuery · Tailwind CSS",
+    link: "",
   },
   {
     title: "Coastal Powder Coating — QA System",
     desc: "A quality-assurance system integrated with Xero and HubSpot for invoice sync, with drag-and-drop invoice management to streamline order inspection and tracking.",
     stack: "Laravel · React.js · Xero API · HubSpot API",
+    link: "",
   },
 ];
 
