@@ -80,6 +80,11 @@ export const skillGroups = [
 
 export const projects = [
   {
+    title: "Track Flow - In Progress",
+    desc: "A one-stop job tracking application that aggregates job listings from multiple job platforms into a single dashboard, allowing users to browse opportunities and manually track their job application progress.",
+    stack: "Python (Django) . JavaScript (ES6+) · HTML . CSS . PostgreSQL · AWS",
+  },
+  {
     title: "Automated Distance-Based Pricing System for Patient Transport",
     desc: "A pricing engine that quotes patient-transport fares in real time using the Google Maps API for distance and routing, replacing manual fare computation. Deployed on GCP for production use.",
     stack: "Laravel · React.js · Google Maps API · GCP",
