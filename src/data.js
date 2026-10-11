@@ -1,7 +1,7 @@
 export const strengths = [
   {
     title: "System integrations",
-    desc: "Two-way syncs between platforms like Xero, HubSpot, and Monday.com using REST APIs and webhooks, so data stays accurate across every tool a business runs on.",
+    desc: "Two-way syncs between platforms like Xero, HubSpot, MYOB, and Monday.com using REST APIs and webhooks, so data stays accurate across every tool a business runs on.",
   },
   {
     title: "End-to-end full-stack delivery",
@@ -21,40 +21,52 @@ export const strengths = [
   },
   {
     title: "Cloud deployment",
-    desc: "Shipping and running applications on AWS and Google Cloud Platform, built to stay up.",
+    desc: "Shipping and running applications on AWS and Google Cloud Platform with Docker and Nginx, built to stay up.",
   },
 ];
 
 export const jobs = [
   {
-    role: "Full Stack Developer (Remote)",
-    org: "Upstream — Canberra, AU",
-    date: "Dec 2019 — Apr 2026",
+    role: "Web Developer (Remote)",
+    org: "Blue Wonders Consultancy — Makati City, PH",
+    date: "Dec 2024 — Oct 2026",
     points: [
-      "Owned full-stack delivery end to end: requirements, business process analysis, database design, testing, deployment, and production support.",
-      "Designed two-way integrations between Monday.com, Xero, HubSpot, and other SaaS platforms using REST APIs and webhooks.",
-      "Built automated data pipelines that reduced manual work and improved consistency across systems.",
-      "Resolved production issues, improving system stability and reducing sync errors.",
+      "Integrated and maintained D24, Prontopaga, and Dragontech88 payment gateways for platforms in Mexico, Argentina, Chile, Colombia, Paraguay, and Ecuador.",
+      "Implemented GA4, Meta Conversions API, and TikTok conversion tracking for accurate campaign attribution.",
+      "Maintained and extended the company's Back Office system, turning business requirements into shipped features.",
+      "Used AI-assisted development tools for code generation, debugging, and refactoring to deliver features faster.",
     ],
   },
   {
-    role: "Full Stack Developer (Remote)",
+    role: "Full Stack Developer — Freelance/Contract (Remote)",
+    org: "Upstream — Canberra, AU",
+    date: "Dec 2019 — Apr 2026",
+    points: [
+      "Owned full-stack projects end to end, from requirements and database design to deployment and support.",
+      "Built two-way Monday.com, Xero, MYOB, and HubSpot integrations for multiple clients via REST APIs and webhooks.",
+      "Automated customer, sales, and financial record sync, replacing manual data entry and reconciliation.",
+      "Built data pipelines that detect sync errors early and keep data consistent across connected systems.",
+    ],
+  },
+  {
+    role: "Full Stack Developer — Freelance/Contract (Remote)",
     org: "CQ Business Management Software — London, UK",
     date: "Jan 2025 — Jun 2025",
     points: [
-      "Delivered full-stack applications and backend systems with Laravel, JavaScript, jQuery, and MySQL.",
-      "Designed RESTful APIs and backend services supporting core functionality and integrations.",
-      "Worked directly with the CEO to define workflows and ship fixes under Agile practices.",
+      "Delivered full-stack features and backend services using Laravel, JavaScript, jQuery, and MySQL.",
+      "Translated requirements gathered directly from the CEO into shipped application features.",
+      "Designed REST APIs connecting core application modules for reliable data exchange.",
+      "Diagnosed and fixed production issues in an Agile workflow, prioritizing fixes with leadership.",
     ],
   },
   {
     role: "Associate Software Developer",
-    org: "Mcvean Pacific Int'l — Clark, Pampanga",
+    org: "Quantum Crowd Inc. (McVean Pacific Int'l Offshoring) — Clark, Pampanga",
     date: "Jan 2019 — Aug 2019",
     points: [
-      "Built web applications in React.js and explored integration with Corda.",
-      "Presented working prototypes to clients and gathered feedback to shape UI/UX.",
-      "Translated stakeholder requirements into functional features.",
+      "Built React.js application features and prototyped a Corda integration for a blockchain use case.",
+      "Presented working prototypes to clients and iterated on UI/UX based on their feedback.",
+      "Debugged and tested application features to find and fix issues early.",
     ],
   },
   {
@@ -62,39 +74,39 @@ export const jobs = [
     org: "Lagotronics Philippines Inc. — Angeles, Pampanga",
     date: "Aug 2017 — May 2018",
     points: [
-      "Programmed animatronic movement sequences using Arduino for smooth motion control.",
-      "Helped install robotics systems and debugged code before deployment.",
-      "Maintained live systems alongside teams and clients to keep performance on spec.",
+      "Programmed Arduino-based animatronic motion sequences for museum exhibits and supported on-site installation.",
+      "Developed the on-screen user interfaces for each animatronic machine using C#.",
     ],
   },
 ];
 
 export const skillGroups = [
-  { cat: "Backend", items: ["PHP (Laravel)", "Node.js (Express)", "Python (Django)", "REST APIs", "Webhooks", "WebSocket", "Authentication & Authorization"] },
+  { cat: "Backend", items: ["PHP (Laravel)", "Node.js (Express)", "Python (Django)", "REST APIs", "Webhooks", "WebSockets"] },
   { cat: "Frontend", items: ["React.js", "JavaScript (ES6+)", "jQuery", "AJAX", "Tailwind CSS"] },
-  { cat: "Database", items: ["MySQL", "PostgreSQL"] },
-  { cat: "Integrations", items: ["Xero", "HubSpot", "Monday.com", "SaaS integrations", "Workflow automation"] },
-  { cat: "Payments", items: ["Stripe", "D24", "Prontopaga", "Dragontech88", "Fintech integrations"] },
-  { cat: "Cloud & DevOps", items: ["AWS", "Google Cloud Platform", "Git"] },
+  { cat: "Databases", items: ["MySQL", "PostgreSQL"] },
+  { cat: "Integrations", items: ["Xero", "HubSpot", "Monday.com", "MYOB", "Google Maps API"] },
+  { cat: "Payments", items: ["Stripe", "D24", "Prontopaga", "Dragontech88"] },
+  { cat: "Cloud & DevOps", items: ["AWS", "Google Cloud Platform", "Docker", "Nginx", "Git"] },
 ];
 
 export const projects = [
   {
-    title: "Track Flow - In Progress",
+    title: "Track Flow",
+    status: "In progress",
     desc: "A one-stop job tracking application that aggregates job listings from multiple job platforms into a single dashboard, allowing users to browse opportunities and manually track their job application progress.",
     stack: "Python (Django) . JavaScript (ES6+) · HTML . CSS . PostgreSQL · AWS",
     link: "https://www.track-flow.cyrillkm.online",
   },
   {
     title: "Automated Distance-Based Pricing System for Patient Transport",
-    desc: "A pricing engine that quotes patient-transport fares in real time using the Google Maps API for distance and routing, replacing manual fare computation. Deployed on GCP for production use.",
+    desc: "A GCP-hosted pricing engine that automates patient-transport fares from real-time routing distance via the Google Maps API, replacing manual fare computation.",
     stack: "Laravel · React.js · Google Maps API · GCP",
     link: "",
   },
   {
     title: "Client Portal — Custom Quoter System",
-    desc: "A secure client portal for custom quoting and business management, with real-time chat over Laravel Broadcasting, document access, and job tracking.",
-    stack: "Laravel · AJAX · jQuery · Tailwind CSS",
+    desc: "A secure portal for custom quoting, job tracking, and document access, with real-time chat between clients and staff to improve workflow transparency.",
+    stack: "Laravel · AJAX · jQuery · Tailwind CSS · Laravel Broadcasting",
     link: "",
   },
   {
