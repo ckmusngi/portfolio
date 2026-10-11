@@ -49,17 +49,6 @@ export const jobs = [
     ],
   },
   {
-    role: "Full Stack Developer — Freelance/Contract (Remote)",
-    org: "CQ Business Management Software — London, UK",
-    date: "Jan 2025 — Jun 2025",
-    points: [
-      "Delivered full-stack features and backend services using Laravel, JavaScript, jQuery, and MySQL.",
-      "Translated requirements gathered directly from the CEO into shipped application features.",
-      "Designed REST APIs connecting core application modules for reliable data exchange.",
-      "Diagnosed and fixed production issues in an Agile workflow, prioritizing fixes with leadership.",
-    ],
-  },
-  {
     role: "Associate Software Developer",
     org: "Quantum Crowd Inc. (McVean Pacific Int'l Offshoring) — Clark, Pampanga",
     date: "Jan 2019 — Aug 2019",
@@ -98,7 +87,7 @@ export const projects = [
     link: "https://www.track-flow.cyrillkm.online",
   },
   {
-    title: "Automated Distance-Based Pricing System for Patient Transport",
+    title: "Automated Distance-Based Pricing System",
     desc: "A GCP-hosted pricing engine that automates patient-transport fares from real-time routing distance via the Google Maps API, replacing manual fare computation.",
     stack: "Laravel · React.js · Google Maps API · GCP",
     link: "",

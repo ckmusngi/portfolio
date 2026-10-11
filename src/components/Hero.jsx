@@ -4,7 +4,6 @@ import { contact } from "../data.js";
 const stats = [
   { value: "6+", label: "Years shipping production apps" },
   { value: "6", label: "LatAm markets on my payment integrations" },
-  { value: "AU · UK", label: "Remote teams I've delivered for" },
 ];
 
 function scrollTo(selector) {

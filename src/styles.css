@@ -357,7 +357,7 @@ a {
 .stats {
   margin-top: 72px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);

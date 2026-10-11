@@ -6,7 +6,7 @@ export default function Experience() {
     <Section
       id="work"
       title="Where I've put these skills to work"
-      sub="Remote roles with teams in the Philippines, Australia, and the UK."
+      sub="Roles with teams in the Philippines and Australia."
     >
       <div className="timeline">
         {jobs.map((j) => {
