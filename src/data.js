@@ -29,7 +29,7 @@ export const jobs = [
   {
     role: "Web Developer (Remote)",
     org: "Blue Wonders Consultancy — Makati City, PH",
-    date: "Dec 2024 — Oct 2026",
+    date: "Dec 2024 — Present",
     points: [
       "Integrated and maintained D24, Prontopaga, and Dragontech88 payment gateways for platforms in Mexico, Argentina, Chile, Colombia, Paraguay, and Ecuador.",
       "Implemented GA4, Meta Conversions API, and TikTok conversion tracking for accurate campaign attribution.",
