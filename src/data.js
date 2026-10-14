@@ -117,5 +117,6 @@ export const contact = {
   phone: "+63 961 678 1306",
   phoneHref: "+639616781306",
   location: "Mexico, Pampanga, Philippines",
-  linkedin: "#",
+  linkedin: "https://www.linkedin.com/in/cyrill-kiel-musngi/",
+  github: "https://github.com/ckmusngi",
 };

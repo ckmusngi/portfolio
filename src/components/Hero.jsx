@@ -1,4 +1,5 @@
 import { Mail, MapPin, ArrowRight } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 import { contact } from "../data.js";
 
 const stats = [

@@ -1,5 +1,5 @@
 import { Mail, Phone } from "lucide-react";
-import { FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { contact } from "../data.js";
 
 export default function Contact() {
@@ -22,6 +22,11 @@ export default function Contact() {
           {hasLinkedin && (
             <a className="btn btn-ghost" href={contact.linkedin} target="_blank" rel="noreferrer">
               <FaLinkedin size={16} /> LinkedIn
+            </a>
+          )}
+          {contact.github && (
+            <a className="btn btn-ghost" href={contact.github} target="_blank" rel="noreferrer">
+              <FaGithub size={16} /> GitHub
             </a>
           )}
         </div>
