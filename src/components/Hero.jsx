@@ -36,7 +36,7 @@ export default function Hero() {
             <span className="gradient-text">systems behind them</span> work together.
           </h1>
           <p className="hero-lede">
-            Full Stack Software Engineer with 6+ years building web applications, backend services,
+            Software Engineer with 6+ years building web applications, backend services,
             and integrations with Laravel, Node.js, React, AWS, and GCP — connecting SaaS platforms
             and payment gateways through REST APIs and webhooks.
           </p>
