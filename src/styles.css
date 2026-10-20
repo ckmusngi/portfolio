@@ -72,6 +72,29 @@
   }
 }
 
+/* Light fixtures (timeline bulbs, skill card lamps, contact billboard rig).
+   Daytime: steel fixtures. Night: slate fixtures. The bulbs are unlit except
+   the billboard's at night. */
+:root {
+  --fx-edge: #94a3b8;
+  --fx-mid: #cbd5e1;
+  --fx-housing: linear-gradient(#e2e8f0, #94a3b8);
+  --fx-hi: rgba(255, 255, 255, 0.9);
+  --fx-post: #cbd5e1;
+  --glass: radial-gradient(circle at 35% 30%, #ffffff, #e2e8f0 70%);
+  --glass-edge: #94a3b8;
+}
+
+:root[data-theme="dark"] {
+  --fx-edge: #13202c;
+  --fx-mid: #2a3a4a;
+  --fx-housing: linear-gradient(#2a3a4a, #0b1622);
+  --fx-hi: rgba(255, 255, 255, 0.25);
+  --fx-post: #01060a;
+  --glass: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04) 70%), #0b1622;
+  --glass-edge: rgba(255, 255, 255, 0.25);
+}
+
 /* ============ Base ============ */
 * {
   margin: 0;
@@ -315,11 +338,71 @@ a {
 .avatar {
   position: relative;
   aspect-ratio: 1 / 1;
+  transform: rotate(3deg);
+  --card-back: translate(14px, -14px) rotate(6deg) scale(0.94);
+}
+
+/* Two stacked cards: the current theme's logo on top, the other peeking out
+   behind. Switching theme shuffles the top card to the back. */
+.avatar-face {
+  position: absolute;
+  inset: 0;
   border-radius: 32px;
   padding: 2px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  transform: rotate(3deg);
   box-shadow: var(--shadow-hover);
+}
+
+.avatar-face-light,
+:root[data-theme="dark"] .avatar-face-dark {
+  z-index: 2;
+  transform: none;
+}
+.avatar-face-dark,
+:root[data-theme="dark"] .avatar-face-light {
+  z-index: 1;
+  transform: var(--card-back);
+}
+
+/* Each theme swaps the keyframes names, which restarts the animations.
+   Gated on data-theme-changed so the shuffle doesn't play on page load. */
+:root[data-theme-changed][data-theme="light"] .avatar-face-light,
+:root[data-theme-changed][data-theme="dark"] .avatar-face-dark {
+  animation: card-to-front 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+:root[data-theme-changed][data-theme="light"] .avatar-face-dark,
+:root[data-theme-changed][data-theme="dark"] .avatar-face-light {
+  animation: card-to-back 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes card-to-back {
+  0% { z-index: 2; transform: none; }
+  50% { z-index: 2; transform: translateX(65%) rotate(14deg) scale(0.96); }
+  51% { z-index: 1; transform: translateX(65%) rotate(14deg) scale(0.96); }
+  100% { z-index: 1; transform: var(--card-back); }
+}
+
+@keyframes card-to-front {
+  0% { z-index: 1; transform: var(--card-back); }
+  50% { z-index: 1; transform: translateX(-12%) rotate(-4deg) scale(0.97); }
+  51% { z-index: 2; transform: translateX(-12%) rotate(-4deg) scale(0.97); }
+  100% { z-index: 2; transform: none; }
+}
+
+/* Each face keeps its own theme's colors (mirrors the light/dark tokens above) */
+.avatar-face-light {
+  --accent: #0d9488;
+  --accent-2: #6366f1;
+  --surface: #ffffff;
+  --glow-1: rgba(13, 148, 136, 0.14);
+  --glow-2: rgba(99, 102, 241, 0.12);
+}
+.avatar-face-dark {
+  --accent: #2dd4bf;
+  --accent-2: #818cf8;
+  --surface: #111114;
+  --glow-1: rgba(45, 212, 191, 0.12);
+  --glow-2: rgba(129, 140, 248, 0.14);
 }
 
 .avatar-inner {
@@ -494,7 +577,8 @@ a {
   top: 28px;
   bottom: 28px;
   width: 2px;
-  background: linear-gradient(var(--accent), var(--accent-2) 40%, var(--border) 80%);
+  /* The wire of the string of lights */
+  background: linear-gradient(90deg, var(--fx-edge), var(--fx-mid), var(--fx-edge));
   border-radius: 2px;
 }
 
@@ -503,6 +587,7 @@ a {
   padding-left: 40px;
 }
 
+/* Each job is an unlit glass bulb on the wire */
 .job-dot {
   position: absolute;
   left: 0;
@@ -510,8 +595,40 @@ a {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--bg);
-  border: 3px solid var(--accent);
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+}
+
+/* Socket joining the bulb to the wire */
+.job-dot::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 8px;
+  height: 6px;
+  margin-left: -4px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, var(--fx-edge), var(--fx-mid), var(--fx-edge));
+}
+
+/* Dark mode: hovering a job card flickers its bulb on. The lit glass is a
+   separate layer so only it flickers and the socket stays steady. */
+:root[data-theme="dark"] .job-dot::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 28px rgba(255, 255, 255, 0.5),
+    0 0 60px rgba(255, 255, 255, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+:root[data-theme="dark"] .job:hover .job-dot::after {
+  opacity: 1;
+  animation: bulb-flicker 0.45s linear;
 }
 
 .job-card {
@@ -638,6 +755,139 @@ a {
 .chip svg {
   flex-shrink: 0;
   color: var(--text-muted);
+}
+
+/* Deal the cards, then their chips, in when the section scrolls into view.
+   `backwards` fill so the hover lift still works once the deal finishes. */
+.is-visible .skill-card {
+  animation: deal-card 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: calc(var(--i) * 80ms);
+}
+.is-visible .chip {
+  animation: deal-chip 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: calc(var(--i) * 80ms + 200ms + var(--j) * 35ms);
+}
+
+@keyframes deal-card {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+}
+@keyframes deal-chip {
+  from { opacity: 0; transform: translateY(-10px) rotate(-6deg) scale(0.9); }
+}
+
+/* An unlit lamp at the bottom of each skill card, like the contact billboard lights */
+.skill-card {
+  position: relative;
+  /* Room for the 30px lamp stand below the chips */
+  padding-bottom: 60px;
+}
+
+.card-bulb {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 38px;
+  height: 30px;
+  margin-left: -19px;
+  /* Lamp housing (with a lit top edge) on a short stem, like the billboard rig */
+  background:
+    linear-gradient(var(--fx-hi), var(--fx-hi)) 0 12px / 100% 1px no-repeat,
+    var(--fx-housing) 0 12px / 100% 10px no-repeat,
+    linear-gradient(90deg, var(--fx-edge), var(--fx-mid), var(--fx-edge)) center bottom / 6px 8px no-repeat;
+}
+
+/* The bulb itself, sitting on the housing */
+.card-bulb::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 7px;
+  width: 24px;
+  height: 12px;
+  border-radius: 12px 12px 0 0;
+  background: var(--glass);
+  box-shadow: inset 0 0 0 1px var(--glass-edge);
+}
+
+/* Dark mode: the lamp is hidden until its card is hovered, then flickers on
+   and lights up the skills */
+:root[data-theme="dark"] .skill-card {
+  overflow: hidden;
+}
+
+/* Keep the card content above the light beam */
+:root[data-theme="dark"] .skill-card > :not(.card-bulb) {
+  position: relative;
+  z-index: 1;
+}
+
+:root[data-theme="dark"] .card-bulb {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+:root[data-theme="dark"] .card-bulb::after {
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 -6px 24px rgba(255, 255, 255, 0.4);
+}
+
+/* Soft cone of light shining up into the card */
+:root[data-theme="dark"] .card-bulb::before {
+  content: "";
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  width: 440px;
+  height: 320px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(to bottom, transparent 0%, transparent 40%, #fff 92%, #fff 100%);
+  filter: blur(24px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .skill-card:hover .card-bulb {
+  opacity: 1;
+}
+/* Only the bulb and its light flicker; the stand stays steady */
+:root[data-theme="dark"] .skill-card:hover .card-bulb::after {
+  animation: bulb-flicker 0.45s linear;
+}
+:root[data-theme="dark"] .skill-card:hover .card-bulb::before {
+  opacity: 0.22;
+  animation: beam-flicker 0.45s linear;
+}
+
+/* Skills wait in the dark (title stays visible) until the lamp lights them.
+   Only on devices that can hover, so touch screens always show the skills. */
+@media (hover: hover) {
+  :root[data-theme="dark"] .skill-card .chip-row {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  :root[data-theme="dark"] .skill-card:hover .chip-row {
+    opacity: 1;
+    animation: bulb-flicker 0.45s linear;
+  }
+}
+
+@keyframes bulb-flicker {
+  0% { opacity: 0.3; }
+  20% { opacity: 1; }
+  35% { opacity: 0.35; }
+  55% { opacity: 1; }
+  70% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes beam-flicker {
+  0% { opacity: 0.07; }
+  20% { opacity: 0.22; }
+  35% { opacity: 0.08; }
+  55% { opacity: 0.22; }
+  70% { opacity: 0.13; }
+  100% { opacity: 0.22; }
 }
 
 /* ============ Projects ============ */
@@ -797,6 +1047,154 @@ a {
   color: var(--text-faint);
 }
 
+/* ============ Contact billboard ============ */
+/* The panel stands on a lighting rig. By day the lamps are off; at night they
+   shine up onto the panel, flickering out now and then. */
+.cta-panel {
+  margin-bottom: 112px;
+}
+
+:root[data-theme="dark"] .cta-panel {
+  border: 4px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(ellipse at center, #143f6d 0%, #01060a 78%);
+}
+
+/* Keep the copy above the light beams */
+.cta-panel > :not(.billboard-rig) {
+  position: relative;
+  z-index: 1;
+}
+
+.billboard-rig {
+  position: absolute;
+  top: 100%;
+  left: 8%;
+  right: 8%;
+  height: 112px;
+  pointer-events: none;
+}
+
+/* Two support posts fading into the ground */
+.billboard-rig::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(var(--fx-post), var(--fx-post)) 18% 0 / 14px 100% no-repeat,
+    linear-gradient(var(--fx-post), var(--fx-post)) 82% 0 / 14px 100% no-repeat;
+  -webkit-mask-image: linear-gradient(#000 60%, transparent);
+  mask-image: linear-gradient(#000 60%, transparent);
+}
+
+/* Catwalk the bulbs sit on */
+.billboard-rig::before {
+  content: "";
+  position: absolute;
+  top: 74px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--fx-post);
+  box-shadow: 0 -1px 0 var(--fx-hi);
+}
+
+:root[data-theme="dark"] .billboard-rig::before {
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.billboard-light {
+  position: absolute;
+  top: 0;
+  height: 52px;
+  width: 0;
+}
+/* Lamp housing under each bulb */
+.billboard-light::before {
+  content: "";
+  position: absolute;
+  top: 52px;
+  left: -19px;
+  width: 38px;
+  height: 10px;
+  border-radius: 2px 2px 4px 4px;
+  background: var(--fx-housing);
+  box-shadow: inset 0 1px 0 var(--fx-hi);
+}
+
+/* Stem connecting the housing to the catwalk */
+.billboard-light::after {
+  content: "";
+  position: absolute;
+  top: 62px;
+  left: -3px;
+  width: 6px;
+  height: 12px;
+  background: linear-gradient(90deg, var(--fx-edge), var(--fx-mid), var(--fx-edge));
+}
+
+.billboard-light:nth-child(1) { left: 6%; }
+.billboard-light:nth-child(2) { left: 28%; }
+.billboard-light:nth-child(3) { left: 50%; }
+.billboard-light:nth-child(4) { left: 72%; }
+.billboard-light:nth-child(5) { left: 94%; }
+
+/* Unlit glass by day */
+.billboard-bulb {
+  position: absolute;
+  bottom: 0;
+  left: -14px;
+  width: 28px;
+  height: 14px;
+  border-radius: 14px 14px 0 0;
+  background: var(--glass);
+  box-shadow: inset 0 0 0 1px var(--glass-edge);
+}
+
+.billboard-beam {
+  display: none;
+}
+
+:root[data-theme="dark"] .billboard-bulb {
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 -6px 24px rgba(255, 255, 255, 0.4);
+  animation: bulbGlow 15.2s var(--delay) infinite;
+}
+
+/* Soft cone of light shining up onto the board */
+:root[data-theme="dark"] .billboard-beam {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: -90px;
+  width: 180px;
+  height: 340px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, transparent 0%, transparent 40%, #fff 92%, #fff 100%);
+  filter: blur(20px);
+  opacity: 0.22;
+  animation: billboardGlow 15.2s var(--delay) infinite;
+}
+
+/* Mostly steady, with brief dropouts like a failing lamp */
+@keyframes billboardGlow {
+  0%, 19% { opacity: 0.22; }
+  20% { opacity: 0; }
+  21% { opacity: 0.34; }
+  59% { opacity: 0.22; }
+  60% { opacity: 0; }
+  61% { opacity: 0.22; }
+  62% { opacity: 0; }
+  63% { opacity: 0.3; }
+  100% { opacity: 0.22; }
+}
+
+@keyframes bulbGlow {
+  0%, 19%, 21%, 59%, 61%, 63%, 100% { opacity: 1; }
+  20%, 60%, 62% { opacity: 0.3; }
+}
+
 /* ============ Responsive ============ */
 @media (max-width: 960px) {
   .strengths-grid,
@@ -824,6 +1222,8 @@ a {
   .avatar {
     order: -1;
     width: 120px;
+  }
+  .avatar-face {
     border-radius: 24px;
   }
   .avatar-inner {
@@ -860,7 +1260,6 @@ a {
   .job-dot {
     width: 12px;
     height: 12px;
-    border-width: 2px;
   }
   .job-card,
   .strength-card,
@@ -875,6 +1274,14 @@ a {
   }
   .contact-row .btn {
     width: 100%;
+  }
+  .billboard-light:nth-child(2),
+  .billboard-light:nth-child(4) {
+    display: none;
+  }
+  .billboard-beam {
+    left: -60px;
+    width: 120px;
   }
 }
 

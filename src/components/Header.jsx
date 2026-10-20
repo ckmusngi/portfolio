@@ -35,6 +35,8 @@ function ThemeToggle() {
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
+    // Enables the avatar shuffle (styles.css); not set on load so it only plays on toggle
+    document.documentElement.dataset.themeChanged = "";
     try {
       localStorage.setItem("theme", next);
     } catch {

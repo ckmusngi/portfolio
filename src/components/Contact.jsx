@@ -2,6 +2,9 @@ import { Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { contact } from "../data.js";
 
+// Flicker offsets (s) for each spotlight so they never blink in unison
+const lightDelays = [3, 5, 0.1, 4, 2.5];
+
 export default function Contact() {
   const hasLinkedin = contact.linkedin && contact.linkedin !== "#";
   return (
@@ -29,6 +32,14 @@ export default function Contact() {
               <FaGithub size={16} /> GitHub
             </a>
           )}
+        </div>
+        <div className="billboard-rig" aria-hidden="true">
+          {lightDelays.map((delay, i) => (
+            <span key={i} className="billboard-light" style={{ "--delay": `${delay}s` }}>
+              <span className="billboard-beam" />
+              <span className="billboard-bulb" />
+            </span>
+          ))}
         </div>
       </div>
       <div className="footer-note">

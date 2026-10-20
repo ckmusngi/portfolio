@@ -1,5 +1,4 @@
 import { Mail, MapPin, ArrowRight } from "lucide-react";
-import { FaLinkedin } from "react-icons/fa";
 import { contact } from "../data.js";
 
 const stats = [
@@ -14,14 +13,21 @@ function scrollTo(selector) {
 /**
  * Monogram avatar for the hero image slot.
  * To use a real photo, put profile.jpg in public/ and replace the
- * <span className="avatar-initials"> below with:
+ * <span className="avatar-initials"> on both faces below with:
  * <img src="/profile.jpg" alt="Cyrill Kiel Musngi" />
  */
 function Avatar() {
   return (
     <div className="avatar">
-      <div className="avatar-inner">
-        <span className="avatar-initials">CK</span>
+      <div className="avatar-face avatar-face-light">
+        <div className="avatar-inner">
+          <span className="avatar-initials">CK</span>
+        </div>
+      </div>
+      <div className="avatar-face avatar-face-dark" aria-hidden="true">
+        <div className="avatar-inner">
+          <span className="avatar-initials">CK</span>
+        </div>
       </div>
     </div>
   );

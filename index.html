@@ -21,6 +21,12 @@
         const t = localStorage.getItem("theme");
         if (t) document.documentElement.dataset.theme = t;
       } catch (e) {}
+      // Resolve the system theme too, so dark-only styles can key off data-theme
+      if (!document.documentElement.dataset.theme) {
+        document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
     </script>
   </head>
   <body>

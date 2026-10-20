@@ -59,10 +59,10 @@ export default function Skills() {
       sub="The stack behind the apps, integrations, and payment flows I ship."
     >
       <div className="skills-grid">
-        {skillGroups.map((g) => {
+        {skillGroups.map((g, i) => {
           const CatIcon = categoryIcons[g.cat];
           return (
-            <div key={g.cat} className="card skill-card">
+            <div key={g.cat} className="card skill-card" style={{ "--i": i }}>
               <div className="skill-cat-label">
                 {CatIcon && (
                   <span className="icon-tile icon-tile-sm">
@@ -72,16 +72,17 @@ export default function Skills() {
                 {g.cat}
               </div>
               <div className="chip-row">
-                {g.items.map((item) => {
+                {g.items.map((item, j) => {
                   const [Icon, color] = skillIcons[item] ?? [];
                   return (
-                    <span key={item} className="chip">
+                    <span key={item} className="chip" style={{ "--j": j }}>
                       {Icon && <Icon size={14} color={color} aria-hidden="true" />}
                       {item}
                     </span>
                   );
                 })}
               </div>
+              <span className="card-bulb" aria-hidden="true" />
             </div>
           );
         })}
