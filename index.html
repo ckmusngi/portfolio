@@ -27,6 +27,10 @@
           ? "dark"
           : "light";
       }
+      // In dark mode the page loads with its details hidden and scrolling locked
+      // until the flashlight is on (see Flashlight.jsx), so don't restore a
+      // scroll position
+      history.scrollRestoration = "manual";
     </script>
   </head>
   <body>

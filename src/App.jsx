@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Header from "./components/Header.jsx";
+import Flashlight from "./components/Flashlight.jsx";
 import Hero from "./components/Hero.jsx";
 import Strengths from "./components/Strengths.jsx";
 import Experience from "./components/Experience.jsx";
@@ -28,11 +29,27 @@ function useReveal() {
   }, []);
 }
 
+// The page can't scroll while it's dark (styles.css), so whenever it goes dark
+// again (switching to dark mode, flashlight off) go back up to the flashlight
+function useTopWhileDark() {
+  useEffect(() => {
+    const root = document.documentElement;
+    const observer = new MutationObserver(() => {
+      const { theme, flashlight } = root.dataset;
+      if (theme === "dark" && flashlight !== "on") window.scrollTo(0, 0);
+    });
+    observer.observe(root, { attributeFilter: ["data-theme", "data-flashlight"] });
+    return () => observer.disconnect();
+  }, []);
+}
+
 export default function App() {
   useReveal();
+  useTopWhileDark();
   return (
-    <div>
+    <div id="top">
       <Header />
+      <Flashlight />
       <div className="container">
         <Hero />
         <Strengths />

@@ -82,7 +82,6 @@ export default function Skills() {
                   );
                 })}
               </div>
-              <span className="card-bulb" aria-hidden="true" />
             </div>
           );
         })}

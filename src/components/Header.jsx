@@ -60,7 +60,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-inner">
-        <NavLink href="#hero" className="brand">
+        <NavLink href="#top" className="brand">
           <span className="brand-mark">CK</span>
           <span className="brand-name">Cyrill Kiel Musngi</span>
         </NavLink>
