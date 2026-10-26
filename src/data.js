@@ -80,28 +80,92 @@ export const skillGroups = [
 
 export const projects = [
   {
+    title: "Free - Resume",
+    status: "Live",
+    desc: "A free resume builder with 39 ATS-friendly templates, a live resume score, matching cover letters, and PDF download. Documents are saved to each user's account, so they can pick up on any device.",
+    stack: "React.js · Supabase · AWS · Buy Me a Coffee",
+    link: "https://free-resume.online",
+    // Opens in a viewer instead of linking straight out
+    screenshots: [
+      {
+        src: "/projects/free-resume/landing.webp",
+        thumb: "/projects/free-resume/landing-thumb.webp",
+        width: 2400,
+        height: 1304,
+        alt: "Free - Resume landing page with the headline \"Build a job-winning resume in minutes\", sample resume templates, and Resume score, ATS-friendly, and PDF ready badges",
+        caption: "Landing page: pick a template, check the resume score, download a PDF",
+      },
+      {
+        src: "/projects/free-resume/dashboard.webp",
+        thumb: "/projects/free-resume/dashboard-thumb.webp",
+        width: 2400,
+        height: 1318,
+        alt: "Free - Resume dashboard with a welcome banner, shortcuts to start a resume or cover letter or import a backup, and saved documents with their resume score",
+        caption: "Dashboard: resumes and cover letters, saved to the user's account",
+      },
+    ],
+  },
+  {
     title: "Track Flow",
     status: "In progress",
     desc: "A one-stop job tracking application that aggregates job listings from multiple job platforms into a single dashboard, allowing users to browse opportunities and manually track their job application progress.",
-    stack: "Python (Django) . JavaScript (ES6+) · HTML . CSS . PostgreSQL · AWS",
+    stack: "Python (Django) . JavaScript (ES6+) · HTML . CSS . PostgreSQL · AWS · Playwright",
     link: "https://www.track-flow.cyrillkm.online",
+    screenshots: [
+      {
+        src: "/projects/track-flow/login.png",
+        thumb: "/projects/track-flow/login.png",
+        width: 2400,
+        height: 1304,
+        alt: "Track Flow login page with the headline \"Track your job applications in one place\", sample job listings, and application tracking features",
+        caption: "Login Page: browse job opportunities and track your applications",
+      },
+      {
+        src: "/projects/track-flow/dashboard.png",
+        thumb: "/projects/track-flow/dashboard.png",
+        width: 2400,
+        height: 1318,
+        alt: "Track Flow dashboard with a welcome banner, shortcuts to start a job application or view saved applications, and application tracking features",
+        caption: "Dashboard: track your job applications and view saved opportunities",
+      },
+      {
+        src: "/projects/track-flow/job-page.png",
+        thumb: "/projects/track-flow/job-page.png",
+        width: 2400,
+        height: 1318,
+        alt: "Track Flow job page with the headline \"Track your job applications in one place\", sample job listings, and application tracking features",
+        caption: "Job Page: view details about a specific job opportunity",
+      }
+    ],
   },
   {
     title: "Automated Distance-Based Pricing System",
     desc: "A GCP-hosted pricing engine that automates patient-transport fares from real-time routing distance via the Google Maps API, replacing manual fare computation.",
     stack: "Laravel · React.js · Google Maps API · GCP",
     link: "",
+    screenshots: [
+      {
+        src: "/projects/auto-distance/login.webp",
+        thumb: "/projects/auto-distance/login.webp",
+        width: 2400,
+        height: 1304,
+        alt: "Automated Distance-Based Pricing System login page with the headline \"Automate your pricing based on real-time distance\", sample pricing scenarios, and application tracking features",
+        caption: "Login Page: browse pricing opportunities and track your applications",
+      },
+      {
+        src: "/projects/auto-distance/dashboard.webp",
+        thumb: "/projects/auto-distance/dashboard.webp",
+        width: 2400,
+        height: 1318,
+        alt: "Automated Distance-Based Pricing System dashboard with a welcome banner, shortcuts to start a pricing calculation or view saved scenarios, and application tracking features",
+        caption: "Dashboard: track your pricing calculations and view saved scenarios",
+      },
+    ],
   },
   {
     title: "Client Portal — Custom Quoter System",
     desc: "A secure portal for custom quoting, job tracking, and document access, with real-time chat between clients and staff to improve workflow transparency.",
     stack: "Laravel · AJAX · jQuery · Tailwind CSS · Laravel Broadcasting",
-    link: "",
-  },
-  {
-    title: "Coastal Powder Coating — QA System",
-    desc: "A quality-assurance system integrated with Xero and HubSpot for invoice sync, with drag-and-drop invoice management to streamline order inspection and tracking.",
-    stack: "Laravel · React.js · Xero API · HubSpot API",
     link: "",
   },
 ];
